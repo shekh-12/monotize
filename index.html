@@ -1,0 +1,227 @@
+<!--
+Single-file landing website for a YouTube channel aimed at monetization.
+How to use:
+1. Open this file in VS Code and save as index.html.
+2. Replace CHANNEL_NAME, CHANNEL_ID and VIDEO IDs with your own.
+3. For Netlify forms: this has a simple form (name, email, message). Netlify will capture submissions if you enable forms on Netlify.
+   - No server code required. Deploy to Netlify (drag & drop or connect repo) and Netlify will detect the form.
+4. To add Google AdSense, paste your AdSense script where indicated (follow AdSense policies).
+5. To show latest videos automatically, you can later integrate YouTube Data API (needs API key). For now replace the sample video iframes.
+
+Features included:
+- Header with channel name, subscribe button, social links
+- Hero with featured video
+- Video gallery (replace iframes)
+- Services / Sponsorship info section
+- Email capture (Netlify form) for mailing list & patronage
+- Merchandise / Affiliate section (buttons)
+- Footer with contact info
+- Minimal, responsive CSS and lightweight JS
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CHANNEL_NAME — MR_JEG_FF</title>
+  <meta name="description" content="Official website for CHANNEL_NAME. Videos, merch, sponsorship info and contact to collaborate or support the channel." />
+
+  <!-- favicon placeholder -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+
+  <!-- Styles: simple responsive layout -->
+  <style>
+    :root{--accent:#ff4d4d;--dark:#0b1020;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.45;color:#0f1724}
+    header{background:linear-gradient(90deg,#fff 0 30%,#f7f7f9);border-bottom:1px solid #e6e9ef}
+    .wrap{max-width:1100px;margin:0 auto;padding:20px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#ff8a8a);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{margin-left:12px;text-decoration:none;color:inherit;font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;padding:36px 0}
+    .hero h1{margin:0;font-size:28px}
+    .hero p{color:var(--muted);margin:6px 0 0}
+    .subscribe{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;border:0;cursor:pointer}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #eef0f4}
+    .card iframe{width:100%;height:190px;border:0;display:block}
+    .card .meta{padding:12px}
+    .muted{color:var(--muted)}
+
+    section{padding:28px 0}
+    .cta{display:flex;gap:12px;align-items:center}
+    .btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:700}
+    .btn-outline{background:transparent;border:1px solid #d1d5db}
+
+    form .row{display:flex;gap:8px}
+    form input,form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e8ee}
+    form button{margin-top:8px}
+
+    footer{padding:30px 0;border-top:1px solid #eef0f4;color:var(--muted)}
+
+    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}.nav{flex-direction:column;align-items:flex-start}.logo{width:44px;height:44px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo">CH</div>
+        <div>
+          <div style="font-weight:800">CHANNEL_NAME - MR_JEG_FF</div>
+          <div class="muted" style="font-size:13px">YouTube Creator • Videos about TOPIC</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px">
+        <!-- Replace href with your channel subscribe link: https://www.youtube.com/channel/CHANNEL_ID?sub_confirmation=1 -->
+        <a class="subscribe" href="https://youtube.com/@mr_jeg_ff_?si=291mH1ZyomE7eYkD">Subscribe</a>
+        <nav>
+          <a href="#videos">Videos</a>
+          <a href="#sponsor">Sponsor</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <h1>Welcome to the MR_JEG_FF channel.</h1>
+        <p class="muted">🎮 Welcome to MR_JEG_FF!
+This is the ultimate destination for Free Fire lovers and gamers who live for action, skills, and fun! 💥
+On this channel, you’ll find intense gameplay, pro tips, live battles, custom room fights, and entertaining highlights — all packed with energy and style.
+
+🔥 What We Do:
+
+Daily Free Fire gameplay & tournaments
+
+Tips, tricks & custom room challenges
+
+Funny moments and squad highlights
+
+Live streams with the MR_JEG_FF community
+
+Join the family, hit the Subscribe button, and be a part of our growing gaming squad!
+Let’s dominate the battlefield together 💪🎯</p>
+
+        <div style="margin-top:14px" class="cta">
+          <a class="btn" href="#videos">Watch Latest</a>
+          <a class="btn btn-outline" href="#contact">Work with me</a>
+        </div>
+      </div>
+
+      <!-- Featured video: replace VIDEO_ID with your featured video -->
+      <div>
+        <div class="card">
+          <iframe src="https://youtube.com/shorts/G6yvFmzNktA?si=hpFrxu8Vwhc6mm7v" title="Featured video" allowfullscreen loading="lazy"></iframe>
+          <div class="meta">
+            <div style="font-weight:700">Featured Video Title</div>
+            <div class="muted" style="font-size:13px">Short description or highlight</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <h2 style="margin:0 0 12px">Latest Videos</h2>
+      <div class="grid">
+        <!-- Replace these iframe src values with your video IDs -->
+        <div class="card"><iframe src="https://youtube.com/shorts/DHU0M1X_My8?si=x915okTMQTKFUqz8" title="Video 1" allowfullscreen loading="lazy"></iframe><div class="meta"><div style="font-weight:700">Video 1</div><div class="muted">Short description</div></div></div>
+        <div class="card"><iframe src="https://www.youtube.com/watch?v=aG4-BTgM3F4" title="Video 2" allowfullscreen loading="lazy"></iframe><div class="meta"><div style="font-weight:700">Video 2</div><div class="muted">Short description</div></div></div>
+        <div class="card"><iframe src="https://youtube.com/shorts/z30c17o4Nfw?si=jtvmCylPStZnCkV7" title="Video 3" allowfullscreen loading="lazy"></iframe><div class="meta"><div style="font-weight:700">Video 3</div><div class="muted">Short description</div></div></div>
+      </div>
+
+      <div style="margin-top:12px;text-align:center">
+        <a class="btn" href="https://youtube.com/@mr_jeg_ff_?si=291mH1ZyomE7eYkD" target="_blank">View full channel</a>
+      </div>
+    </section>
+
+    <section id="sponsor">
+      <h2 style="margin:0 0 12px">Sponsorship & Services</h2>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <div style="font-weight:700">Brand Sponsorships</div>
+          <p class="muted">I collaborate on sponsored videos, product reviews and shoutouts. Typical packages: Integration, Dedicated video, Social shoutouts — starting at INR X (replace with your rates).</p>
+        </div>
+
+        <div style="flex:1;min-width:260px">
+          <div style="font-weight:700">Affiliate & Merch</div>
+          <p class="muted">Promote products using affiliate links or buy official merch. Use this section to list affiliate links or embed a simple merch button linking to an external store.</p>
+          <div style="margin-top:8px;display:flex;gap:8px">
+            <a class="btn" href="#" onclick="alert('Replace with your merch link')">Shop Merch</a>
+            <a class="btn btn-outline" href="#" onclick="alert('Replace with affiliate link')">Affiliate</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 style="margin:0 0 12px">Contact & Join the Newsletter</h2>
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:18px">
+
+        <div>
+          <p class="muted">For business inquiries, sponsorships or collaboration please use the form. For urgent matters email: <strong>db648612@gmail.com</strong> (replace with yours).</p>
+
+          <!-- Netlify form: deploy to Netlify and submissions will be captured -->
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p style="display:none">
+              <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+            </p>
+            <div class="row">
+              <input type="text" name="name" placeholder="Your name" required>
+              <input type="email" name="email" placeholder="Your email" required>
+            </div>
+            <p><textarea name="message" rows="4" placeholder="Message (sponsorship / collab details)" required></textarea></p>
+            <p><button class="btn" type="submit">Send message</button></p>
+          </form>
+        </div>
+
+        <aside style="padding:12px;border-radius:10px;background:#fff;border:1px solid #eef0f4">
+          <div style="font-weight:700">Become a supporter</div>
+          <p class="muted">Support the channel via Patreon / BuyMeACoffee / Membership for exclusive content and early access to videos.</p>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <a class="btn" href="#" onclick="alert('Replace with your Patreon link')">Patreon</a>
+            <a class="btn btn-outline" href="#" onclick="alert('Replace with BuyMeACoffee link')">BuyMeACoffee</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div>
+        <div style="font-weight:800">MR_JEG_FF</div>
+        <div class="muted" style="font-size:13px">© <span id="year"></span> mr_jeg_ff.
+      <div class="muted">Follow: <a href="#" onclick="alert('Add your social links')">Instagram</a> • <a href="#" onclick="alert('Add your social links')">Twitter</a> • <a href="#" onclick="alert('Add your social links')">Facebook</a></div>
+    </div>
+  </footer>
+
+  <!-- Placeholder for ads: follow Google AdSense policies and place ad code here if approved -->
+  <!-- Example: Paste AdSense script and ad slot where you'd like ads to appear (e.g. between videos). -->
+
+  <script>
+    // small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple subscribe CTA to open youtube subscribe in new tab
+    document.querySelectorAll('.subscribe').forEach(el=>el.addEventListener('click',function(e){
+      // Let link naturally open — no need to intercept. This is here if you want to do analytics.
+    }));
+
+    // Progressive enhancement: iframes lazy-loaded by 'loading=lazy' attribute already
+
+    // If you want to dynamically load latest videos without API: you could embed your channel's "videos" playlist iframe or use YouTube Data API.
+
+  </script>
+</body>
+</html>
